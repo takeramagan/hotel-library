@@ -12,10 +12,13 @@ type ColumnProps = {
   field: string;
   key: string;
 }[];
+
+type EditProps = undefined | ((_: Map<string, unknown>) => void);
 export class ReservationTable extends LitElement {
   @property({ type: Object }) dataSource: DataProps = [];
 
   @property({ type: Object }) columns: ColumnProps = [];
+  @property({ type: Object }) onEdit: EditProps = undefined;
 
   static styles = css``;
 
@@ -27,7 +30,11 @@ export class ReservationTable extends LitElement {
       return html`<td>${rowMap.get(v)}</td>`;
     });
 
-    return html`<tr>
+    return html`<tr
+      @dblclick=${() =>
+        this.onEdit && this.onEdit(rowMap as Map<string, unknown>)}
+      key=${rowMap.get("key")}
+    >
       ${_row}
     </tr>`;
   };
