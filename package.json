@@ -22,12 +22,8 @@
     "test:nowatch": "cross-env CI=true",
     "lint": "eslint --ext js,ts,tsx src --max-warnings 5",
     "build": "tsc && npm run analyze -- --exclude dist",
-    "prepublish": "npm run lint && npm run analyze -- --exclude dist"
-  },
-  "husky":{
-    "hooks":{
-      "pre-commit" : "npm run lint"
-    }
+    "prepublish": "npm run lint && npm run analyze -- --exclude dist",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@material/mwc-button": "0.20.0",
@@ -56,7 +52,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-promise": "^6.0.0",
-    "husky": "^8.0.1",
+    "husky": "^8.0.0",
     "prettier": "^2.7.1",
     "tslib": "^2.3.1",
     "typescript": "^4.5.2"
