@@ -181,26 +181,35 @@ export class ReservationForm extends LitElement {
         <mwc-formfield label="Credit card">
         <mwc-radio ?checked=${
           this.formValue.payment === "cc"
-        } id="payment" value="cc"></mwc-radio>
+        } id="payment" value="cc"
+        @blur=${() => this.checkFormValidity()}>
+        ></mwc-radio>
       </mwc-formfield>
       <mwc-formfield label="PayPal">
         <mwc-radio ?checked=${
           this.formValue.payment === "pp"
-        } id="payment" value="pp"></mwc-radio>
+        } id="payment" value="pp"
+        @blur=${() => this.checkFormValidity()}>
+        ></mwc-radio>
         </mwc-formfield>
       <mwc-formfield label="Cash">
         <mwc-radio ?checked=${
           this.formValue.payment === "cash"
-        } id="payment" value="cash"></mwc-radio>
+        } id="payment" value="cash"
+        @blur=${() => this.checkFormValidity()}>
+        ></mwc-radio>
       </mwc-formfield>
       <mwc-formfield label="Bitcoin">
         <mwc-radio ?checked=${
           this.formValue.payment === "bit"
-        } id="payment" value="bit"></mwc-radio>
+        } id="payment" value="bit"
+        @blur=${() => this.checkFormValidity()}>
+        ></mwc-radio>
       </mwc-formfield>
         <div>
           <mwc-textarea id="note" type="text" placeholder="Note" label="Note"
           value=${this.formValue.note}
+          @blur=${() => this.checkFormValidity()}>
           />
         </div>
         <br/>
@@ -209,6 +218,7 @@ export class ReservationForm extends LitElement {
             <mwc-switch ?checked=${
               this.formValue.reminder
             } id="reminder" name="reminder"
+            @blur=${() => this.checkFormValidity()}>
             ></mwc-switch>
           </mwc-formfield>
         </div>
@@ -218,14 +228,16 @@ export class ReservationForm extends LitElement {
           >
             <mwc-switch ?checked=${
               this.formValue.newsletter
-            } id="newsletter" name="newsletter"></mwc-switch>
+            } id="newsletter" name="newsletter"
+            @blur=${() => this.checkFormValidity()}>
+            ></mwc-switch>
           </mwc-formfield>
         </div>
         <div>
           <mwc-formfield label="I confirm the information given above">
-            <mwc-checkbox ?checked=${
-              this.formValue.confirm
-            } id="confirm" ></mwc-checkbox>
+            <mwc-checkbox ?checked=${this.formValue.confirm} id="confirm" 
+            @blur=${() => this.checkFormValidity()}>
+            ></mwc-checkbox>
           </mwc-formfield>
         </div>
         <div ?hidden=${!this.formValue.key}>
