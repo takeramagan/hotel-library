@@ -17,7 +17,8 @@ export class SearchFilter extends LitElement {
         <mwc-textfield
           id="arrivalDate"
           type="date"
-          placeholder="arrival Date"
+          placeholder="Arrival Date"
+          label="Arrival Date"
         />
       </p>
       <p>departure:</p>
@@ -25,20 +26,41 @@ export class SearchFilter extends LitElement {
         <mwc-textfield
           id="departureDate"
           type="date"
+          label="Departure Date"
           placeholder="Departure Date"
         />
       </p>
       <p>
-        <mwc-textfield id="firstName" type="text" placeholder="First Name" />
+        <mwc-textfield
+          id="firstName"
+          type="text"
+          placeholder="First Name"
+          label="First Name"
+        />
       </p>
       <p>
-        <mwc-textfield id="lastName" type="text" placeholder="Last Name" />
+        <mwc-textfield
+          id="lastName"
+          type="text"
+          placeholder="Last Name"
+          label="Last Name"
+        />
       </p>
       <p>
-        <mwc-textfield id="phone" type="text" placeholder="Phone" />
+        <mwc-textfield
+          id="phone"
+          type="text"
+          placeholder="Phone"
+          label="Phone"
+        />
       </p>
       <p>
-        <mwc-textfield id="email" type="text" placeholder="Email" />
+        <mwc-textfield
+          id="email"
+          type="text"
+          placeholder="Email"
+          label="Email"
+        />
       </p>
       <mwc-button
         unelevated
