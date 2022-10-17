@@ -20,6 +20,7 @@
     "analyze": "cem analyze --litelement",
     "start": "tsc && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"wds\"",
     "test:nowatch": "cross-env CI=true",
+    "test": "tsc && npm run analyze -- --exclude dist",
     "lint": "eslint --ext js,ts,tsx src --max-warnings 5",
     "build": "tsc && npm run analyze -- --exclude dist",
     "prepublish": "npm run lint && npm run analyze -- --exclude dist",
