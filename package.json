@@ -28,7 +28,7 @@
     "hooks":{
       "pre-commit" : "npm run lint"
     }
-  }
+  },
   "dependencies": {
     "@material/mwc-button": "0.20.0",
     "@material/mwc-checkbox": "0.20.0",
