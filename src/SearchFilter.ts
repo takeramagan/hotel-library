@@ -75,7 +75,6 @@ export class SearchFilter extends LitElement {
     const fields = this.shadowRoot!.querySelectorAll(
       "mwc-textfield, mwc-select, mwc-checkbox, mwc-radio"
     );
-    // console.log(fields);
 
     fields.forEach((field: any) => {
       if (field.tagName === "MWC-TEXTFIELD" || field.tagName === "MWC-SELECT") {
