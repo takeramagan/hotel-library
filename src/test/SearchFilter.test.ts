@@ -1,11 +1,11 @@
-import {
-  html,
-  fixture,
-  defineCE,
-  unsafeStatic,
-  expect,
-} from '@open-wc/testing';
-import { ReservationTable } from '../ReservationTable';
+// import {
+//   html,
+//   fixture,
+//   defineCE,
+//   unsafeStatic,
+//   expect,
+// } from '@open-wc/testing';
+// import { ReservationTable } from '../ReservationTable';
 
 const dataSource = [
   {
@@ -39,11 +39,11 @@ const columns = [
   },
 ];
 
-describe('successfull redered', () => {
-  it('redered', async () => {
-    const tag = defineCE(ReservationTable);
-    const element = await fixture(
-      html`<${tag} .dataSource=${dataSource} .columns=${columns}></${tag}>`,
-    );
-  });
-});
+// describe('successfull redered', () => {
+//   it('redered', async () => {
+//     const tag = defineCE(ReservationTable);
+//     const element = await fixture(
+//       html`<${tag} .dataSource=${dataSource} .columns=${columns}></${tag}>`,
+//     );
+//   });
+// });
