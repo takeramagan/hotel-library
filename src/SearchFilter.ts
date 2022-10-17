@@ -12,7 +12,6 @@ export class SearchFilter extends LitElement {
 
   render() {
     return html`
-      <p>arrival:</p>
       <p>
         <mwc-textfield
           id="arrivalDate"
@@ -21,7 +20,6 @@ export class SearchFilter extends LitElement {
           label="Arrival Date"
         />
       </p>
-      <p>departure:</p>
       <p>
         <mwc-textfield
           id="departureDate"

@@ -140,7 +140,7 @@ export class ReservationForm extends LitElement {
             placeholder="Street Name"
             label="Street Name"
             validationMessage="Invalid"
-            value=${this.formValue.roomQuantity}
+            value=${this.formValue.streetName}
             @blur=${() => this.checkFormValidity()}>
           />
         </div>
@@ -159,7 +159,7 @@ export class ReservationForm extends LitElement {
           <mwc-textfield id="zipCode" type="text" placeholder="ZIP" required 
           label="ZIP"
           validationMessage="Invalid"
-          value=${this.formValue.roomQuantity}
+          value=${this.formValue.zipCode}
               @blur=${() => this.checkFormValidity()}>
           />
         </div>
