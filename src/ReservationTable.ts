@@ -1,9 +1,9 @@
-import { LitElement, html, css } from "lit";
-import { property } from "lit/decorators.js";
-import "@material/mwc-button";
-import "@material/mwc-textfield";
-import "@material/mwc-checkbox";
-import "@material/mwc-formfield";
+import { LitElement, html, css } from 'lit';
+import { property } from 'lit/decorators.js';
+import '@material/mwc-button';
+import '@material/mwc-textfield';
+import '@material/mwc-checkbox';
+import '@material/mwc-formfield';
 
 type DataProps = Map<string, unknown>[];
 
@@ -23,7 +23,7 @@ export class ReservationTable extends LitElement {
   static styles = css``;
 
   private getRow = (row: Map<string, unknown>, fields: string[]) => {
-    let rowMap =
+    const rowMap =
       row instanceof Map ? row : row ? new Map(Object.entries(row)) : new Map();
 
     const _row = fields.map((v) => {
@@ -33,7 +33,7 @@ export class ReservationTable extends LitElement {
     return html`<tr
       @dblclick=${() =>
         this.onEdit && this.onEdit(rowMap as Map<string, unknown>)}
-      key=${rowMap.get("key")}
+      key=${rowMap.get('key')}
     >
       ${_row}
     </tr>`;
@@ -56,4 +56,4 @@ export class ReservationTable extends LitElement {
   }
 }
 
-customElements.define("reservation-table", ReservationTable);
+customElements.define('reservation-table', ReservationTable);

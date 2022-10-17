@@ -1,3 +1,3 @@
-import { SearchFilter } from "./SearchFilter";
+import { SearchFilter } from './SearchFilter';
 
-window.customElements.define("search-filter", SearchFilter);
+window.customElements.define('search-filter', SearchFilter);

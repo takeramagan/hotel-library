@@ -1,12 +1,13 @@
-import { LitElement, html, css } from "lit";
-import { property } from "lit/decorators.js";
-import "@material/mwc-button";
-import "@material/mwc-textfield";
-import "@material/mwc-checkbox";
-import "@material/mwc-formfield";
+import { LitElement, html, css } from 'lit';
+import { property } from 'lit/decorators.js';
+import '@material/mwc-button';
+import '@material/mwc-textfield';
+import '@material/mwc-checkbox';
+import '@material/mwc-formfield';
 
 export class SearchFilter extends LitElement {
-  @property() onSubmit = (v: any) => {};
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  @property() onSubmit = (v: unknown) => {};
 
   static styles = css``;
 
@@ -71,21 +72,22 @@ export class SearchFilter extends LitElement {
   }
 
   private _onSubmit = () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const payload = {} as any;
     const fields = this.shadowRoot!.querySelectorAll(
-      "mwc-textfield, mwc-select, mwc-checkbox, mwc-radio"
+      'mwc-textfield, mwc-select, mwc-checkbox, mwc-radio',
     );
-
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     fields.forEach((field: any) => {
-      if (field.tagName === "MWC-TEXTFIELD" || field.tagName === "MWC-SELECT") {
+      if (field.tagName === 'MWC-TEXTFIELD' || field.tagName === 'MWC-SELECT') {
         payload[field.id] = field.value;
       }
 
-      if (field.tagName === "MWC-CHECKBOX") {
+      if (field.tagName === 'MWC-CHECKBOX') {
         payload[field.id] = field.checked;
       }
 
-      if (field.tagName === "MWC-RADIO" && field.checked) {
+      if (field.tagName === 'MWC-RADIO' && field.checked) {
         payload[field.id] = field.value;
       }
     });
@@ -99,4 +101,4 @@ export class SearchFilter extends LitElement {
   };
 }
 
-customElements.define("search-filter", SearchFilter);
+customElements.define('search-filter', SearchFilter);

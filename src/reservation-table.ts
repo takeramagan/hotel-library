@@ -1,3 +1,3 @@
-import { ReservationTable } from "./ReservationTable";
+import { ReservationTable } from './ReservationTable';
 
-window.customElements.define("reservation-table", ReservationTable);
+window.customElements.define('reservation-table', ReservationTable);

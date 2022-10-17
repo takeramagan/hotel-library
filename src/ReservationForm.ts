@@ -1,23 +1,25 @@
-import { LitElement, html, css } from "lit";
-import { property, state } from "lit/decorators.js";
-import "@material/mwc-button";
-import "@material/mwc-checkbox";
-import "@material/mwc-formfield";
-import "@material/mwc-select";
-import "@material/mwc-list/mwc-list-item";
-import "@material/mwc-textfield";
-import "@material/mwc-textarea";
-import "@material/mwc-switch";
-import "@material/mwc-radio";
-import { initialFormValues, roomOptions } from "./constant";
+import { LitElement, html, css } from 'lit';
+import { property, state } from 'lit/decorators.js';
+import '@material/mwc-button';
+import '@material/mwc-checkbox';
+import '@material/mwc-formfield';
+import '@material/mwc-select';
+import '@material/mwc-list/mwc-list-item';
+import '@material/mwc-textfield';
+import '@material/mwc-textarea';
+import '@material/mwc-switch';
+import '@material/mwc-radio';
+import { initialFormValues, roomOptions } from './constant';
 
 export class ReservationForm extends LitElement {
-  @property() onSubmit = (v: object) => {};
-  @property() onDelete = (v: object) => {};
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  @property() onSubmit = (v: unknown) => {};
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  @property() onDelete = () => {};
   @property() initValues = initialFormValues;
   @property() formValue = initialFormValues;
 
-  @state() isFormValid: boolean = false;
+  @state() isFormValid = false;
 
   static styles = css`
     .form {
@@ -75,7 +77,7 @@ export class ReservationForm extends LitElement {
           @blur=${() => this.checkFormValidity()}>
           ${roomOptions.map(
             (v) =>
-              html`<mwc-list-item value=${v.value}>${v.label}</mwc-list-item>`
+              html`<mwc-list-item value=${v.value}>${v.label}</mwc-list-item>`,
           )}
         </mwc-select>
         </div>
@@ -180,28 +182,28 @@ export class ReservationForm extends LitElement {
         </div>
         <mwc-formfield label="Credit card">
         <mwc-radio ?checked=${
-          this.formValue.payment === "cc"
+          this.formValue.payment === 'cc'
         } id="payment" value="cc"
         @blur=${() => this.checkFormValidity()}>
         ></mwc-radio>
       </mwc-formfield>
       <mwc-formfield label="PayPal">
         <mwc-radio ?checked=${
-          this.formValue.payment === "pp"
+          this.formValue.payment === 'pp'
         } id="payment" value="pp"
         @blur=${() => this.checkFormValidity()}>
         ></mwc-radio>
         </mwc-formfield>
       <mwc-formfield label="Cash">
         <mwc-radio ?checked=${
-          this.formValue.payment === "cash"
+          this.formValue.payment === 'cash'
         } id="payment" value="cash"
         @blur=${() => this.checkFormValidity()}>
         ></mwc-radio>
       </mwc-formfield>
       <mwc-formfield label="Bitcoin">
         <mwc-radio ?checked=${
-          this.formValue.payment === "bit"
+          this.formValue.payment === 'bit'
         } id="payment" value="bit"
         @blur=${() => this.checkFormValidity()}>
         ></mwc-radio>
@@ -264,15 +266,15 @@ export class ReservationForm extends LitElement {
   }
 
   private checkFormValidity = () => {
-    const requiredFields = this.shadowRoot!.querySelectorAll("[required]");
-    const validFields: Boolean[] = []; // stores the validity of all required fields
+    const requiredFields = this.shadowRoot!.querySelectorAll('[required]');
+    const validFields: boolean[] = []; // stores the validity of all required fields
 
     requiredFields.forEach((field, k) => {
       // validFields.push(field.validity.valid);
       const {
         value,
         validity: { valid },
-      } = field as any;
+      } = field as never;
       // field.id === "firstName" && console.log(valid);
       validFields.push(valid);
       this.isFormValid = !validFields.includes(false);
@@ -280,12 +282,14 @@ export class ReservationForm extends LitElement {
   };
 
   private _onSubmit = () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const payload = {} as any;
     const fields = this.shadowRoot!.querySelectorAll(
-      "mwc-textfield, mwc-select, mwc-checkbox, mwc-radio, mwc-switch, mwc-textarea, mwc-switch, mwc-list"
+      'mwc-textfield, mwc-select, mwc-checkbox, mwc-radio, mwc-switch, mwc-textarea, mwc-switch, mwc-list',
     );
     // console.log(fields);
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     fields.forEach((field: any) => {
       // console.log(field.tagName, field.id, field.value);
       // if (field.id === "test") {
@@ -294,13 +298,13 @@ export class ReservationForm extends LitElement {
       // }
       // console.log(field);
       if (
-        field.tagName === "MWC-CHECKBOX" ||
-        field.tagName === "MWC-RADIO" ||
-        field.tagName === "MWC-SWITCH"
+        field.tagName === 'MWC-CHECKBOX' ||
+        field.tagName === 'MWC-RADIO' ||
+        field.tagName === 'MWC-SWITCH'
       ) {
-        if (field.id === "payment") {
+        if (field.id === 'payment') {
           if (field.checked) {
-            //only set value of checked payment method
+            // only set value of checked payment method
             payload[field.id] = field.value;
           }
         } else {
@@ -316,7 +320,7 @@ export class ReservationForm extends LitElement {
   };
 }
 
-customElements.define("reservation-form", ReservationForm);
+customElements.define('reservation-form', ReservationForm);
 
 /**
  *     

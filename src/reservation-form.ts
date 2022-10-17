@@ -1,3 +1,3 @@
-import { ReservationForm } from "./ReservationForm";
+import { ReservationForm } from './ReservationForm';
 
-window.customElements.define("reservation-form", ReservationForm);
+window.customElements.define('reservation-form', ReservationForm);
