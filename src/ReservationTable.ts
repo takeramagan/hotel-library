@@ -20,7 +20,28 @@ export class ReservationTable extends LitElement {
   @property({ type: Object }) columns: ColumnProps = [];
   @property({ type: Object }) onEdit: EditProps = undefined;
 
-  static styles = css``;
+  static styles = css`
+    td,
+    th {
+      border: 1px solid #ddd;
+      padding: 8px;
+      white-space: nowrap;
+      text-align: center;
+    }
+    th {
+      width: 100%;
+      margin-top: 40px;
+      padding-bottom: 12px;
+      background-color: #04aa6d;
+      color: white;
+    }
+    tr:hover {
+      background-color: #ddd;
+    }
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+  `;
 
   private getRow = (row: Map<string, unknown>, fields: string[]) => {
     const rowMap =

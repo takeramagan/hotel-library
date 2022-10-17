@@ -22,10 +22,12 @@ export class ReservationForm extends LitElement {
   @state() isFormValid = false;
 
   static styles = css`
-    .form {
-      display: grid;
-      gap: 10px;
-      padding-bottom: 10px;
+    div .button {
+      justify-content: space-between;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      background-color: 'red';
     }
   `;
 
@@ -40,20 +42,21 @@ export class ReservationForm extends LitElement {
     // console.log("init1", this.formValue);
     // console.log("newsletter", typeof this.formValue.newsletter);
     return html`
+    <div class='container'>
       <form>
-        <div>
+        <div class="date">
           <div>
-              <mwc-textfield
-                id="arrivalDate"
-                label="Date of Arrival"
-                type="date"
-                placeholder="arrival Date"
-                value=${this.formValue.arrivalDate}
-                required
-                validationMessage="Invalid"
-                @blur=${() => this.checkFormValidity()}>
-              />
-          </div>
+            <mwc-textfield
+              id="arrivalDate"
+              label="Date of Arrival"
+              type="date"
+              placeholder="arrival Date"
+              value=${this.formValue.arrivalDate}
+              required
+              validationMessage="Invalid"
+              @blur=${() => this.checkFormValidity()}>
+            />
+         </div>
           <div>
             <mwc-textfield
               id="departureDate"
@@ -64,22 +67,24 @@ export class ReservationForm extends LitElement {
               value=${this.formValue.departureDate}
               placeholder="Departure Date"
             />
-          </div>
+            </div>
         </div>
         <div>
           <mwc-select
-          required 
-          name="country" 
-          id="roomSize"
-          label="Room Size"
-          validationMessage="Invalid"
-          value=${this.formValue.roomSize}
-          @blur=${() => this.checkFormValidity()}>
-          ${roomOptions.map(
-            (v) =>
-              html`<mwc-list-item value=${v.value}>${v.label}</mwc-list-item>`,
-          )}
-        </mwc-select>
+            required 
+            name="country" 
+            id="roomSize"
+            label="Room Size"
+            validationMessage="Invalid"
+            value=${this.formValue.roomSize}
+            @blur=${() => this.checkFormValidity()}>
+            ${roomOptions.map(
+              (v) =>
+                html`<mwc-list-item value=${v.value}
+                  >${v.label}</mwc-list-item
+                >`,
+            )}
+          </mwc-select>
         </div>
         <div>
           <mwc-textfield
@@ -180,34 +185,36 @@ export class ReservationForm extends LitElement {
               @blur=${() => this.checkFormValidity()}>
           />
         </div>
-        <mwc-formfield label="Credit card">
-        <mwc-radio ?checked=${
-          this.formValue.payment === 'cc'
-        } id="payment" value="cc"
-        @blur=${() => this.checkFormValidity()}>
-        ></mwc-radio>
-      </mwc-formfield>
-      <mwc-formfield label="PayPal">
-        <mwc-radio ?checked=${
-          this.formValue.payment === 'pp'
-        } id="payment" value="pp"
-        @blur=${() => this.checkFormValidity()}>
-        ></mwc-radio>
-        </mwc-formfield>
-      <mwc-formfield label="Cash">
-        <mwc-radio ?checked=${
-          this.formValue.payment === 'cash'
-        } id="payment" value="cash"
-        @blur=${() => this.checkFormValidity()}>
-        ></mwc-radio>
-      </mwc-formfield>
-      <mwc-formfield label="Bitcoin">
-        <mwc-radio ?checked=${
-          this.formValue.payment === 'bit'
-        } id="payment" value="bit"
-        @blur=${() => this.checkFormValidity()}>
-        ></mwc-radio>
-      </mwc-formfield>
+        <div>
+            <mwc-formfield label="Credit card">
+            <mwc-radio ?checked=${
+              this.formValue.payment === 'cc'
+            } id="payment" value="cc"
+            @blur=${() => this.checkFormValidity()}>
+            ></mwc-radio>
+          </mwc-formfield>
+          <mwc-formfield label="PayPal">
+            <mwc-radio ?checked=${
+              this.formValue.payment === 'pp'
+            } id="payment" value="pp"
+            @blur=${() => this.checkFormValidity()}>
+            ></mwc-radio>
+            </mwc-formfield>
+          <mwc-formfield label="Cash">
+            <mwc-radio ?checked=${
+              this.formValue.payment === 'cash'
+            } id="payment" value="cash"
+            @blur=${() => this.checkFormValidity()}>
+            ></mwc-radio>
+          </mwc-formfield>
+          <mwc-formfield label="Bitcoin">
+            <mwc-radio ?checked=${
+              this.formValue.payment === 'bit'
+            } id="payment" value="bit"
+            @blur=${() => this.checkFormValidity()}>
+            ></mwc-radio>
+          </mwc-formfield>
+        </div>
         <div>
           <mwc-textarea id="note" type="text" placeholder="Note" label="Note"
           value=${this.formValue.note}
@@ -242,26 +249,28 @@ export class ReservationForm extends LitElement {
             ></mwc-checkbox>
           </mwc-formfield>
         </div>
-        <div ?hidden=${!this.formValue.key}>
-          <mwc-button
-          unelevated
-          label="delete"
-          class="custom"
-          @click=${this.onDelete}>
-        </mwc-button>
+        <div class="button">
+          <div ?hidden=${!this.formValue.key}>
+            <mwc-button
+              unelevated
+              label="delete"
+              class="custom"
+              @click=${this.onDelete}
+            ></mwc-button>
+          </div>
+          <div>
+            <mwc-button
+              unelevated
+              ?disabled=${!this.isFormValid} 
+              label="save"
+              type="submit"
+              class="custom"
+              @click=${this._onSubmit}
+            ></mwc-button>
+          </div>
         </div>
-        <br/>
-        <div>
-          <mwc-button
-            unelevated
-            ?disabled=${!this.isFormValid} 
-            label="save"
-            type="submit"
-            class="custom"
-            @click=${this._onSubmit}
-          ></mwc-button>
-        </div>
-      </form>
+        </form>
+      </div>
     `;
   }
 

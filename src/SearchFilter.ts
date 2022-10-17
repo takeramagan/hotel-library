@@ -9,65 +9,88 @@ export class SearchFilter extends LitElement {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   @property() onSubmit = (v: unknown) => {};
 
-  static styles = css``;
+  static styles = css`
+    div .info {
+      display: flex;
+      flex-direction: row;
+    }
+    p {
+      margin-right: 10px;
+    }
+    mwc-button {
+      margin-vertical: 10px;
+    }
+  `;
 
   render() {
     return html`
-      <p>
-        <mwc-textfield
-          id="arrivalDate"
-          type="date"
-          placeholder="Arrival Date"
-          label="Arrival Date"
-        />
-      </p>
-      <p>
-        <mwc-textfield
-          id="departureDate"
-          type="date"
-          label="Departure Date"
-          placeholder="Departure Date"
-        />
-      </p>
-      <p>
-        <mwc-textfield
-          id="firstName"
-          type="text"
-          placeholder="First Name"
-          label="First Name"
-        />
-      </p>
-      <p>
-        <mwc-textfield
-          id="lastName"
-          type="text"
-          placeholder="Last Name"
-          label="Last Name"
-        />
-      </p>
-      <p>
-        <mwc-textfield
-          id="phone"
-          type="text"
-          placeholder="Phone"
-          label="Phone"
-        />
-      </p>
-      <p>
-        <mwc-textfield
-          id="email"
-          type="text"
-          placeholder="Email"
-          label="Email"
-        />
-      </p>
-      <mwc-button
-        unelevated
-        label="submit"
-        type="submit"
-        class="custom"
-        @click=${this._onSubmit}
-      ></mwc-button>
+      <div>
+        <div class="info">
+          <p>
+            <mwc-textfield
+              id="arrivalDate"
+              type="date"
+              placeholder="Arrival Date"
+              label="Arrival Date"
+            />
+          </p>
+          <p>
+            <mwc-textfield
+              id="departureDate"
+              type="date"
+              label="Departure Date"
+              placeholder="Departure Date"
+            />
+          </p>
+        </div>
+        <div>
+          <div>
+            <div class="info">
+              <p>
+                <mwc-textfield
+                  id="firstName"
+                  type="text"
+                  placeholder="First Name"
+                  label="First Name"
+                />
+              </p>
+              <p>
+                <mwc-textfield
+                  id="lastName"
+                  type="text"
+                  placeholder="Last Name"
+                  label="Last Name"
+                />
+              </p>
+              <p>
+                <mwc-textfield
+                  id="phone"
+                  type="text"
+                  placeholder="Phone"
+                  label="Phone"
+                />
+              </p>
+              <p>
+                <mwc-textfield
+                  id="email"
+                  type="text"
+                  placeholder="Email"
+                  label="Email"
+                />
+              </p>
+            </div>
+            <p>
+              <mwc-button
+                unelevated
+                label="submit"
+                type="submit"
+                class="custom"
+                @click=${this._onSubmit}
+              ></mwc-button>
+            </p>
+          </div>
+        </div>
+      </div>
     `;
   }
 
